@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  app:
+    container_name: calendar
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./calendar:/usr/src/app
+
+    command: sh -c "yarn start"
+    ports:
+      - 3000:3000
+    stdin_open: true
