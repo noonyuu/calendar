@@ -4,7 +4,7 @@ import { MdCancel } from "react-icons/md";
 import { NavItems } from "./NavItems";
 
 export const Header = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const click = () => setOpen(!open);
 
   return (
