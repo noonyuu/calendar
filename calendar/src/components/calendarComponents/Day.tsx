@@ -32,9 +32,10 @@ export const Day = (props: { day: Dayjs; rowIdx: number }) => {
   return (
     <div className="flex flex-col border border-gray-200">
       <header className="flex flex-col items-center">
-        {rowIdx === 0 && <p className="mt-1 text-sm">{day.format("ddd")}</p>}
+        {rowIdx === 0 && <p className="mt-1 text-sm">{day.format("ddd")}</p>}{" "}
+        {/* 曜日の短縮名 */}
         <p className={`my-1 p-1 text-center text-sm ${getCurrentDayClass()}`}>
-          {day.format("DD")}
+          {day.format("DD")} {/* 日付 */}
         </p>
       </header>
       <div
@@ -43,16 +44,22 @@ export const Day = (props: { day: Dayjs; rowIdx: number }) => {
           setDaySelected(day);
           setShowEventModal(true);
         }}
-      ></div>
-      {dayEvents.map((evt, idx) => (
-        <div
-          key={idx}
-          onClick={() => setSelectedEvent(evt)}
-          className={`mb-1 mr-3 truncate rounded bg-neutral-200 p-1 text-sm text-gray-600`}
-        >
-          {evt.title}
-        </div>
-      ))}
+      >
+        {dayEvents.map(
+          (evt, idx) => (
+            console.log(evt),
+            (
+              <div
+                key={idx}
+                onClick={() => setSelectedEvent(evt)}
+                className={`mb-1 mr-3 truncate rounded bg-neutral-200 p-1 text-sm text-gray-600`}
+              >
+                {evt.title}
+              </div>
+            )
+          ),
+        )}
+      </div>
     </div>
   );
 };
