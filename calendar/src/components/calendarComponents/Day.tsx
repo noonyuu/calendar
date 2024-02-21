@@ -20,6 +20,11 @@ export const Day = (props: { day: Dayjs; rowIdx: number }) => {
       : "";
   };
 
+  // 前月と翌月の日付をグレーアウトする
+  const getOtherMonthClass = () => {
+    return day.month() !== dayjs().month() ? "text-gray-500" : "";
+  };
+
   // 登録データを日付が一致する日に表示
   useEffect(() => {
     const events = savedEvents.filter(
@@ -41,7 +46,7 @@ export const Day = (props: { day: Dayjs; rowIdx: number }) => {
       >
         {/* 曜日の短縮名 */}
         <p
-          className={`my-1 p-1 text-center text-sm ${getCurrentDayClass()}`}
+          className={`my-1 p-1 text-center text-sm ${getCurrentDayClass()} ${getOtherMonthClass()}`}
         >
           {day.format("DD")} {/* 日付 */}
         </p>
