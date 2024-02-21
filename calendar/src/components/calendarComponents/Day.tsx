@@ -31,20 +31,20 @@ export const Day = (props: { day: Dayjs; rowIdx: number }) => {
 
   return (
     <div className="flex flex-col border border-gray-200">
-      <header className="flex flex-col items-center">
-        {rowIdx === 0 && <p className="mt-1 text-sm">{day.format("ddd")}</p>}{" "}
-        {/* 曜日の短縮名 */}
-        <p className={`my-1 p-1 text-center text-sm ${getCurrentDayClass()}`}>
-          {day.format("DD")} {/* 日付 */}
-        </p>
-      </header>
+      {/* <header className="flex flex-col items-center"></header> */}
       <div
-        className="flex-1 cursor-pointer"
+        className="flex flex-1 cursor-pointer flex-col items-center"
         onClick={() => {
           setDaySelected(day);
           setShowEventModal(true);
         }}
       >
+        {/* 曜日の短縮名 */}
+        <p
+          className={`my-1 p-1 text-center text-sm ${getCurrentDayClass()}`}
+        >
+          {day.format("DD")} {/* 日付 */}
+        </p>
         {dayEvents.map(
           (evt, idx) => (
             console.log(evt),
