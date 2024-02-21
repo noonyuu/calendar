@@ -7,9 +7,18 @@ export const Month = (props: { month: any[] }) => {
   // 曜日の配列
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+  // カレンダーの日付の縦幅の割合
+  const rowHeight = "rowHeight";
+  // 曜日のヘッダーの縦幅の割合
+  const headerHeight = "10%";
+
   return (
     <div
       className="grid flex-1 grid-cols-7 grid-rows-5"
+      style={{
+        gridTemplateRows:
+          "headerHeight rowHeight rowHeight rowHeight rowHeight rowHeight",
+      }}
     >
       {/* 曜日のヘッダー */}
       {daysOfWeek.map((dayOfWeek, index) => (
